@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Strings | Complete Guide</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="navbar">
+        <a href="#" class="logo">Java<span>Strings</span></a>
+        <div class="nav-links">
+          <a href="#basics">Basics</a>
+          <a href="#methods">Methods</a>
+          <a href="#memory">Memory</a>
+          <a href="#playground">Playground</a>
+        </div>
+      </nav>
+
+      <div class="hero-content">
+        <p class="eyebrow">JAVA PROGRAMMING GUIDE</p>
+        <h1>Master <span>Strings</span> in Java</h1>
+        <p>
+          Understand String creation, immutability, memory, important methods,
+          and real Java programs with examples.
+        </p>
+        <a href="#basics" class="hero-button">Start Learning →</a>
+      </div>
+
+      <div class="hero-note">
+        <span>01</span> Learn the concept <span>02</span> Understand the code
+        <span>03</span> Practice yourself
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="intro section" id="basics">
+        <p class="section-label">01 / INTRODUCTION</p>
+        <h2>What is a String?</h2>
+
+        <p>
+          In Java, a String is an object that represents a sequence of
+          characters. We use Strings to store and process text, such as names,
+          messages, addresses and passwords.
+        </p>
+
+        <div class="info-card">
+          <h3>Definition</h3>
+          <p>
+            A String is an object of the predefined
+            <code>java.lang.String</code> class used to represent text.
+          </p>
+        </div>
+
+        <h3>Example</h3>
+        <pre><code>public class Main {
+    public static void main(String[] args) {
+        String name = "Chandini";
+        String language = "Java";
+
+        System.out.println(name);
+        System.out.println(language);
+    }
+}</code></pre>
+
+        <div class="output">
+          <strong>Output</strong>
+          <p>Chandini</p>
+          <p>Java</p>
+        </div>
+
+        <h3>Why do we use Strings?</h3>
+        <ul class="feature-list">
+          <li>To store names and personal details.</li>
+          <li>To display messages and notifications.</li>
+          <li>To process user input and text files.</li>
+          <li>To compare, search and modify text representations.</li>
+          <li>To work with APIs, websites and database text values.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <p class="section-label">02 / CREATION</p>
+        <h2>Ways to Create Strings</h2>
+
+        <div class="content-card">
+          <h3>1. Using a String Literal</h3>
+          <pre><code>String s1 = "Java";
+String s2 = "Java";
+
+System.out.println(s1);
+System.out.println(s1 == s2);</code></pre>
+          <div class="output">
+            <strong>Output</strong>
+            <p>Java</p>
+            <p>true</p>
+          </div>
+          <p>
+            String literals are stored in the String Constant Pool. When the
+            same literal is reused, Java can reuse the pooled String object.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>2. Using the new Keyword</h3>
+          <pre><code>String s1 = new String("Java");
+String s2 = new String("Java");
+
+System.out.println(s1.equals(s2));
+System.out.println(s1 == s2);</code></pre>
+          <div class="output">
+            <strong>Output</strong>
+            <p>true</p>
+            <p>false</p>
+          </div>
+          <p>
+            Each execution of <code>new String("Java")</code>
+            creates a distinct String object. The objects contain equal text,
+            but their references differ.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <h3>3. Using a Character Array</h3>
+          <pre><code>char[] letters = {'J', 'a', 'v', 'a'};
+String language = new String(letters);
+
+System.out.println(language);</code></pre>
+          <div class="output">
+            <strong>Output</strong>
+            <p>Java</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="memory">
+        <p class="section-label">03 / MEMORY</p>
+        <h2>String Constant Pool</h2>
+        <p>
+          The String Constant Pool is a special area associated with the JVM's
+          heap that allows String literals to be reused. Reusing an object can
+          save memory.
+        </p>
+
+        <div class="memory-grid">
+          <div class="memory-card pool">
+            <span class="memory-icon">01</span>
+            <h3>String Pool</h3>
+            <p>Stores and reuses pooled String instances.</p>
+            <code>String a = "Hello";</code>
+            <code>String b = "Hello";</code>
+            <p class="memory-result">a and b can refer to the same object.</p>
+          </div>
+
+          <div class="memory-card heap">
+            <span class="memory-icon">02</span>
+            <h3>Distinct Objects</h3>
+            <p>The new keyword creates a separate object.</p>
+            <code>String c = new String("Hello");</code>
+            <p class="memory-result">c refers to a different object from a.</p>
+          </div>
+        </div>
+
+        <h3>Compare references and content</h3>
+        <pre><code>String a = "Hello";
+String b = "Hello";
+String c = new String("Hello");
+
+System.out.println(a == b);
+System.out.println(a == c);
+System.out.println(a.equals(c));</code></pre>
+
+        <div class="output">
+          <strong>Output</strong>
+          <p>true</p>
+          <p>false</p>
+          <p>true</p>
+        </div>
+
+        <p>
+          <strong>Remember:</strong> <code>==</code> compares object references.
+          <code>equals()</code> compares String content.
+        </p>
+      </section>
+
+      <section class="section">
+        <p class="section-label">04 / IMMUTABILITY</p>
+        <h2>String Immutability</h2>
+        <p>
+          Strings in Java are immutable. This means that once a String object is
+          created, its character content cannot be changed. Methods that appear
+          to modify a String return a new String instead.
+        </p>
+
+        <pre><code>String text = "Hello";
+text.concat(" Java");
+
+System.out.println(text);
+
+text = text.concat(" Java");
+System.out.println(text);</code></pre>
+
+        <div class="output">
+          <strong>Output</strong>
+          <p>Hello</p>
+          <p>Hello Java</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Why is immutability useful?</h3>
+          <ul>
+            <li>
+              String values are safer to share between parts of a program.
+            </li>
+            <li>String literals can be reused through the pool.</li>
+            <li>
+              Strings are suitable for values such as file paths and
+              identifiers.
+            </li>
+            <li>Immutable objects simplify reasoning about shared data.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="methods">
+        <p class="section-label">05 / IMPORTANT METHODS</p>
+        <h2>String Methods in Java</h2>
+        <p>
+          These methods help you inspect, compare, search and transform text.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Purpose</th>
+                <th>Example result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>length()</td>
+                <td>Returns the number of UTF-16 code units.</td>
+                <td>"Java" → 4</td>
+              </tr>
+              <tr>
+                <td>charAt(1)</td>
+                <td>Returns the character at index 1.</td>
+                <td>"Java" → a</td>
+              </tr>
+              <tr>
+                <td>substring(1, 3)</td>
+                <td>
+                  Returns characters from index 1 up to, but not including, 3.
+                </td>
+                <td>"Java" → av</td>
+              </tr>
+              <tr>
+                <td>equals()</td>
+                <td>Compares content, case-sensitively.</td>
+                <td>"Java" equals "Java" → true</td>
+              </tr>
+              <tr>
+                <td>equalsIgnoreCase()</td>
+                <td>Compares content ignoring case.</td>
+                <td>"java" → "JAVA" → true</td>
+              </tr>
+              <tr>
+                <td>compareTo()</td>
+                <td>Compares lexicographically.</td>
+                <td>"Apple".compareTo("Banana") → negative</td>
+              </tr>
+              <tr>
+                <td>concat()</td>
+                <td>Joins Strings.</td>
+                <td>"Hello".concat("!") → Hello!</td>
+              </tr>
+              <tr>
+                <td>contains()</td>
+                <td>Checks for a character sequence.</td>
+                <td>"Java".contains("av") → true</td>
+              </tr>
+              <tr>
+                <td>indexOf()</td>
+                <td>Finds the first matching index.</td>
+                <td>"Java".indexOf('a') → 1</td>
+              </tr>
+              <tr>
+                <td>lastIndexOf()</td>
+                <td>Finds the last matching index.</td>
+                <td>"Java".lastIndexOf('a') → 3</td>
+              </tr>
+              <tr>
+                <td>replace()</td>
+                <td>Replaces matching characters or sequences.</td>
+                <td>"Java".replace('a','o') → Jovo</td>
+              </tr>
+              <tr>
+                <td>toUpperCase()</td>
+                <td>Converts letters to uppercase.</td>
+                <td>"java" → JAVA</td>
+              </tr>
+              <tr>
+                <td>toLowerCase()</td>
+                <td>Converts letters to lowercase.</td>
+                <td>"JAVA" → java</td>
+              </tr>
+              <tr>
+                <td>startsWith()</td>
+                <td>Checks the beginning.</td>
+                <td>"Java".startsWith("Ja") → true</td>
+              </tr>
+              <tr>
+                <td>endsWith()</td>
+                <td>Checks the ending.</td>
+                <td>"Java".endsWith("va") → true</td>
+              </tr>
+              <tr>
+                <td>isEmpty()</td>
+                <td>Checks whether length is zero.</td>
+                <td>"".isEmpty() → true</td>
+              </tr>
+              <tr>
+                <td>isBlank()</td>
+                <td>Checks whether empty or whitespace-only.</td>
+                <td>" ".isBlank() → true</td>
+              </tr>
+              <tr>
+                <td>strip()</td>
+                <td>Removes leading/trailing Unicode whitespace.</td>
+                <td>" Java ".strip() → Java</td>
+              </tr>
+              <tr>
+                <td>repeat(3)</td>
+                <td>Repeats a String.</td>
+                <td>"Hi".repeat(3) → HiHiHi</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="note">
+          Note: <code>isBlank()</code>, <code>strip()</code> and
+          <code>repeat()</code> are available in Java 11 and later.
+        </p>
+
+        <h3>Example program using String methods</h3>
+        <pre><code>public class Main {
+    public static void main(String[] args) {
+        String text = "Java Programming";
+
+        System.out.println(text.length());
+        System.out.println(text.toUpperCase());
+        System.out.println(text.contains("Java"));
+        System.out.println(text.substring(0, 4));
+        System.out.println(text.replace("Java", "Python"));
+    }
+}</code></pre>
+
+        <div class="output">
+          <strong>Output</strong>
+          <p>16</p>
+          <p>JAVA PROGRAMMING</p>
+          <p>true</p>
+          <p>Java</p>
+          <p>Python Programming</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="section-label">06 / COMPARISON</p>
+        <h2>String vs StringBuilder vs StringBuffer</h2>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>String</th>
+                <th>StringBuilder</th>
+                <th>StringBuffer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mutable?</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>Thread-safe methods?</td>
+                <td>Content is immutable</td>
+                <td>No synchronization guarantee</td>
+                <td>Its methods are synchronized</td>
+              </tr>
+              <tr>
+                <td>Repeated modifications</td>
+                <td>May create many new Strings</td>
+                <td>Often efficient</td>
+                <td>Often efficient, with synchronization overhead</td>
+              </tr>
+              <tr>
+                <td>Typical use</td>
+                <td>Fixed text values</td>
+                <td>Single-threaded text building</td>
+                <td>Shared mutable text when synchronization is needed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>StringBuilder example</h3>
+        <pre><code>public class Main {
+    public static void main(String[] args) {
+        StringBuilder result = new StringBuilder("Hello");
+
+        result.append(" Java");
+        result.insert(5, "!");
+        result.reverse();
+
+        System.out.println(result);
+    }
+}</code></pre>
+
+        <div class="output">
+          <strong>Output</strong>
+          <p>avaJ !olleH</p>
+        </div>
+
+        <p>
+          <strong>Key point:</strong> String is immutable, while StringBuilder
+          and StringBuffer are mutable.
+        </p>
+      </section>
+
+      <section class="section">
+        <p class="section-label">07 / INTERVIEW PREPARATION</p>
+        <h2>Common Interview Questions</h2>
+
+        <details>
+          <summary>1. Is String a primitive data type?</summary>
+          <p>
+            No. String is a class in Java. The primitive types include int,
+            char, boolean, double and others.
+          </p>
+        </details>
+
+        <details>
+          <summary>2. Why is String immutable?</summary>
+          <p>
+            Immutability supports safe sharing, pooled String reuse and
+            predictable values. It also helps make Strings suitable for
+            security-sensitive values, though it does not make every use
+            automatically secure.
+          </p>
+        </details>
+
+        <details>
+          <summary>3. What is the difference between == and equals()?</summary>
+          <p>
+            For objects, == compares references. String.equals() compares
+            character content.
+          </p>
+        </details>
+
+        <details>
+          <summary>4. What is the String Constant Pool?</summary>
+          <p>
+            It is a JVM mechanism for reusing String instances corresponding to
+            literals and interned Strings.
+          </p>
+        </details>
+
+        <details>
+          <summary>5. Can we change a String after creating it?</summary>
+          <p>
+            No. String objects are immutable. You can assign a new String to a
+            variable, but the original object remains unchanged.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            6. What is the difference between StringBuilder and StringBuffer?
+          </summary>
+          <p>
+            Both are mutable. StringBuffer synchronizes its methods, while
+            StringBuilder generally avoids that overhead.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            7. What happens when we concatenate Strings using +?
+          </summary>
+          <p>
+            Java evaluates the concatenation expression to produce a String.
+            Repeated concatenation in a loop may be less efficient than using
+            StringBuilder.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            8. What is the difference between an empty String and null?
+          </summary>
+          <p>
+            An empty String, "", is a real String object with zero length. null
+            means a reference does not refer to an object.
+          </p>
+        </details>
+      </section>
+
+      <section class="section playground" id="playground">
+        <p class="section-label">08 / PRACTICE</p>
+        <h2>Interactive String Playground</h2>
+        <p>
+          Enter any text, choose a Java String operation and see the result.
+          This is a JavaScript-based demonstration of common String behavior; it
+          does not execute Java code.
+        </p>
+
+        <label for="userText">Your text</label>
+        <textarea id="userText" rows="3" placeholder="Type your text here...">
+Hello Java</textarea
+        >
+
+        <label for="operation">Choose an operation</label>
+        <select id="operation">
+          <option value="length">length()</option>
+          <option value="upper">toUpperCase()</option>
+          <option value="lower">toLowerCase()</option>
+          <option value="reverse">Reverse text (practice)</option>
+          <option value="first">charAt(0)</option>
+          <option value="trim">strip-like whitespace removal</option>
+          <option value="words">Count words (practice)</option>
+        </select>
+
+        <button id="runButton" type="button">Run Operation</button>
+
+        <div class="result-card" aria-live="polite">
+          <span>RESULT</span>
+          <p id="result">Your result will appear here.</p>
+        </div>
+      </section>
+
+      <section class="final-banner">
+        <p class="section-label">YOUR NEXT STEP</p>
+        <h2>Practice Makes Progress!</h2>
+        <p>
+          Write small Java programs every day and test each String method.
+          Understanding examples is the first step toward solving interview
+          questions confidently.
+        </p>
+        <a href="#basics" class="hero-button">Revise from the Beginning ↑</a>
+      </section>
+    </main>
+
+    <footer>
+      <p>Java Strings Learning Project</p>
+      <p>Designed for learning Java concepts with examples.</p>
+    </footer>
+  </body>
+</html>
